@@ -1,24 +1,25 @@
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import BlogList from './components/BlogList';
-import CreatePost from './components/CreatePost';
-// import EditBlog from './components/EditBlog';
-import Header from './components/Header';
-import EditPost from './components/EditPost';
-import BlogDetail from './components/BlogDetail';
+import Home from './pages/Home'; // Assuming Home.js exists in src/pages/
+import Login from './pages/Login'; // Assuming Login.js exists in src/pages/
+import Register from './pages/Register'; // Correct path to Register.js
+import Sidebar from './components/Sidebar';
 
-function App() {
+const App = () => {
   return (
     <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<BlogList />} />
-        <Route path="/create" element={<CreatePost />} />
-        <Route path="*" element={<div>Page Not Found</div>} />
-        <Route path="/edit/:id" element={<EditPost />} />
-        <Route path="/post/:id" element={<BlogDetail />} />
-      </Routes>
+      <div style={{ display: 'flex' }}>
+        <Sidebar />
+        <div style={{ marginLeft: '250px', padding: '20px', width: '100%' }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </div>
+      </div>
     </Router>
   );
-}
+};
 
 export default App;
